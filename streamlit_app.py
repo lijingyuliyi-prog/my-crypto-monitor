@@ -9,7 +9,7 @@ import pandas as pd
 def get_binance_price(symbol):
     if not symbol: return "N/A"
     try:
-        url = "https://fapi.binance.com/fapi/v1/ticker/price"
+        url = "https://data-api.binance.com/fapi/v1/ticker/price"
         resp = requests.get(url, params={"symbol": symbol.upper().strip()}, timeout=5)
         return resp.json().get("price", "N/A") if resp.status_code == 200 else f"Error({resp.status_code})"
     except: return "Connect Error"
